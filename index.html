@@ -4,20 +4,11 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- Faz a página se adaptar ao celular -->
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Para você ❤️</title>
 
   <style>
-
-    /* =====================================================
-       CONFIGURAÇÕES GERAIS
-       ===================================================== */
-
     * {
       box-sizing: border-box;
     }
@@ -25,64 +16,34 @@
     body {
       margin: 0;
       min-height: 100vh;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       overflow: hidden;
-
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ffe4ec,
-          #fce7f3,
-          #e6f3ff
-        );
-
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #ffe4ec, #fce7f3, #e6f3ff);
       color: #333;
     }
 
-
-    /* =====================================================
-       CORAÇÕES DO FUNDO
-       ===================================================== */
-
     .heart {
       position: fixed;
-
       bottom: -30px;
-
       width: 18px;
       height: 18px;
-
       background: #ff6b81;
-
       transform: rotate(45deg);
-
       animation: subir 8s linear infinite;
-
       opacity: 0.5;
-
       z-index: 0;
     }
 
     .heart::before,
     .heart::after {
       content: "";
-
       position: absolute;
-
       width: 18px;
       height: 18px;
-
       background: #ff6b81;
-
       border-radius: 50%;
     }
 
@@ -97,13 +58,8 @@
     }
 
     @keyframes subir {
-
       0% {
-        transform:
-          translateY(0)
-          rotate(45deg)
-          scale(0.7);
-
+        transform: translateY(0) rotate(45deg) scale(0.7);
         opacity: 0;
       }
 
@@ -112,329 +68,171 @@
       }
 
       100% {
-        transform:
-          translateY(-120vh)
-          rotate(45deg)
-          scale(1.2);
-
+        transform: translateY(-120vh) rotate(45deg) scale(1.2);
         opacity: 0;
       }
-
     }
 
-
-    /* =====================================================
-       CARTA
-       ===================================================== */
-
     .container {
-
       position: relative;
-
       z-index: 10;
-
       width: min(700px, 90%);
-
       padding: 40px 30px;
-
       text-align: center;
-
-      background:
-        rgba(255, 255, 255, 0.78);
-
+      background: rgba(255, 255, 255, 0.78);
       backdrop-filter: blur(15px);
-
       border-radius: 28px;
-
-      box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.15);
-
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
       animation: aparecer 1s ease;
     }
 
     @keyframes aparecer {
-
       from {
         opacity: 0;
-        transform:
-          translateY(25px)
-          scale(0.96);
+        transform: translateY(25px) scale(0.96);
       }
 
       to {
         opacity: 1;
-        transform:
-          translateY(0)
-          scale(1);
+        transform: translateY(0) scale(1);
       }
-
     }
 
-
-    /* =====================================================
-       TÍTULO
-       ===================================================== */
-
     h1 {
-
       margin-top: 0;
-
       margin-bottom: 25px;
-
-      font-size:
-        clamp(28px, 6vw, 44px);
-
+      font-size: clamp(28px, 6vw, 44px);
       color: #d6335c;
     }
 
-
-    /* =====================================================
-       TEXTO
-       ===================================================== */
-
     #texto {
-
       min-height: 180px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
-      font-size:
-        clamp(18px, 4vw, 23px);
-
+      font-size: clamp(18px, 4vw, 23px);
       line-height: 1.7;
-
       color: #333;
-
-      transition:
-        opacity 0.4s ease,
-        transform 0.4s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-
-    /* =====================================================
-       BOTÃO
-       ===================================================== */
-
     button {
-
       margin-top: 25px;
-
       border: none;
-
       border-radius: 999px;
-
       padding: 15px 32px;
-
       font-size: 18px;
-
       font-weight: bold;
-
       color: white;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ff5277,
-          #e63963
-        );
-
+      background: linear-gradient(135deg, #ff5277, #e63963);
       cursor: pointer;
-
-      box-shadow:
-        0 10px 25px
-        rgba(230, 57, 99, 0.3);
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+      box-shadow: 0 10px 25px rgba(230, 57, 99, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     button:hover {
-
       transform: translateY(-3px);
-
-      box-shadow:
-        0 15px 30px
-        rgba(230, 57, 99, 0.4);
+      box-shadow: 0 15px 30px rgba(230, 57, 99, 0.4);
     }
 
     button:active {
-
       transform: scale(0.95);
     }
 
-
-    /* =====================================================
-       TELA FINAL
-       ===================================================== */
-
     #final {
-
       display: none;
-
       position: fixed;
-
       inset: 0;
-
       z-index: 100;
-
       align-items: center;
-
       justify-content: center;
-
       flex-direction: column;
-
       padding: 30px;
-
       text-align: center;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ffe4ec,
-          #fff0f5
-        );
-
+      background: linear-gradient(135deg, #ffe4ec, #fff0f5);
       animation: aparecer 1s ease;
     }
 
     #final h2 {
-
-      font-size:
-        clamp(40px, 10vw, 70px);
-
+      font-size: clamp(40px, 10vw, 70px);
       color: #d6335c;
-
       margin: 0 0 20px;
     }
 
     #final p {
-
-      font-size:
-        clamp(20px, 5vw, 28px);
-
+      font-size: clamp(20px, 5vw, 28px);
       line-height: 1.6;
-
       max-width: 650px;
     }
 
-
-    /* =====================================================
-       CORAÇÕES DA TELA FINAL
-       ===================================================== */
-
     .coracao-final {
-
       position: fixed;
-
       font-size: 30px;
-
       pointer-events: none;
-
-      animation:
-        explodir 2.5s ease-out forwards;
+      animation: explodir 2.5s ease-out forwards;
     }
 
     @keyframes explodir {
-
       0% {
-
-        transform:
-          translate(0, 0)
-          scale(0.5);
-
+        transform: translate(0, 0) scale(0.5);
         opacity: 1;
       }
 
       100% {
-
-        transform:
-          translate(
-            var(--x),
-            var(--y)
-          )
-          scale(1.5)
-          rotate(360deg);
-
+        transform: translate(var(--x), var(--y)) scale(1.5) rotate(360deg);
         opacity: 0;
       }
-
     }
 
-
-    /* =====================================================
-       AJUSTES PARA CELULAR
-       ===================================================== */
-
     @media (max-width: 600px) {
-
       .container {
-
-        padding:
-          30px 20px;
+        padding: 30px 20px;
       }
 
       #texto {
-
         min-height: 240px;
-
         font-size: 18px;
       }
 
       button {
-
         width: 100%;
       }
-
     }
-
   </style>
 </head>
 
-
 <body>
 
+  <!-- MÚSICA -->
+  <!-- O arquivo experience.mp3 precisa estar no mesmo local do index.html -->
+  <audio id="musica" loop>
+    <source src="experience.mp3" type="audio/mpeg">
+  </audio>
 
-  <!-- =====================================================
-       CORAÇÕES DO FUNDO
-       ===================================================== -->
 
+  <!-- CORAÇÕES DO FUNDO -->
   <script>
-
-    // Cria vários corações aleatórios
     for (let i = 0; i < 25; i++) {
 
-      const heart =
-        document.createElement("div");
+      const heart = document.createElement("div");
 
       heart.className = "heart";
 
-      // Define uma posição horizontal aleatória
       heart.style.left =
         Math.random() * 100 + "vw";
 
-      // Define uma velocidade aleatória
       heart.style.animationDuration =
         (6 + Math.random() * 7) + "s";
 
-      // Define um atraso aleatório
       heart.style.animationDelay =
         Math.random() * 8 + "s";
 
       document.body.appendChild(heart);
     }
-
   </script>
 
 
-  <!-- =====================================================
-       CARTA
-       ===================================================== -->
-
+  <!-- CARTA -->
   <main class="container" id="carta">
 
     <h1 id="titulo">
@@ -442,15 +240,15 @@
     </h1>
 
     <div id="texto">
+
       <p>
         Eu sei que a vida anda corrida pra você...
         <br><br>
-
         Preparei isso para você.
         <br><br>
-
         Leia até o final. ❤️
       </p>
+
     </div>
 
     <button id="botao">
@@ -460,10 +258,7 @@
   </main>
 
 
-  <!-- =====================================================
-       MENSAGEM FINAL
-       ===================================================== -->
-
+  <!-- FINAL -->
   <section id="final">
 
     <h2>
@@ -478,10 +273,6 @@
 
 
   <script>
-
-    /* =====================================================
-       ELEMENTOS DA PÁGINA
-       ===================================================== */
 
     const titulo =
       document.getElementById("titulo");
@@ -498,38 +289,33 @@
     const final =
       document.getElementById("final");
 
+    const musica =
+      document.getElementById("musica");
+
 
     /* =====================================================
        MENSAGENS
-
-       Seu texto foi mantido.
-       Apenas dividimos em partes para a leitura.
        ===================================================== */
 
     const mensagens = [
 
       {
-        titulo:
-          "Para a minha garota trabalhadora ❤️",
+        titulo: "Para a minha garota trabalhadora ❤️",
 
-        texto:
-          `
+        texto: `
           <p>
             Eu sei que a vida anda corrida pra você,
             sei das suas dores, seus esforços,
             tudo o que você me permitiu conhecer
             até então...
           </p>
-          `
+        `
       },
 
-
       {
-        titulo:
-          "Quero que você saiba... ❤️",
+        titulo: "Quero que você saiba... ❤️",
 
-        texto:
-          `
+        texto: `
           <p>
             quero que saiba que eu lhe admiro
             grandemente, e que vc é um ser incrível,
@@ -537,88 +323,117 @@
             quero poder ter o privilégio de conhecer
             pessoalmente....
           </p>
-          `
+        `
       },
 
-
       {
-        titulo:
-          "Um sonho meu... ❤️",
+        titulo: "Um sonho meu... ❤️",
 
-        texto:
-          `
+        texto: `
           <p>
             meu sonho seria poder te olhar bem de perto,
             e dizer o quanto vc é especial...
           </p>
-          `
+        `
       },
 
-
       {
-        titulo:
-          "Se esse dia nunca chegar...",
+        titulo: "Se esse dia nunca chegar...",
 
-        texto:
-          `
+        texto: `
           <p>
             Caso esse dia nunca chegue, quero que saiba
             que enquanto escrevo isso pra você,
             é a coisa mais verdadeira que já disse
             até hoje, é do fundo do meu coração...
           </p>
-          `
+        `
       },
 
-
       {
-        titulo:
-          "Só quero te pedir uma coisa... ❤️",
+        titulo: "Só quero te pedir uma coisa... ❤️",
 
-        texto:
-          `
+        texto: `
           <p>
             te peço que nao desista,
             que continue firme,
             pois a vida tem dessas né,
             nunca sabemos o dia de amanhã...
           </p>
-          `
+        `
       },
 
-
       {
-        titulo:
-          "E nunca se esqueça...",
+        titulo: "E nunca se esqueça...",
 
-        texto:
-          `
+        texto: `
           <p>
             estarei sempre aqui pra você,
             independente de tudo!
           </p>
-          `
+        `
       }
 
     ];
 
 
-    /* =====================================================
-       CONTROLE DAS ETAPAS
-       ===================================================== */
-
     let etapa = -1;
 
+    /*
+      Controla se a música já foi iniciada.
+
+      Ela começa UMA ÚNICA VEZ em 01:51.
+      Depois disso, continua normalmente.
+    */
+
+    let musicaIniciada = false;
+
+
+    /* =====================================================
+       BOTÃO
+       ===================================================== */
+
+    botao.addEventListener("click", () => {
+
+      /*
+        PRIMEIRO CLIQUE:
+
+        01:51 = 111 segundos
+
+        A música começa exatamente nesse ponto.
+      */
+
+      if (!musicaIniciada) {
+
+        musica.currentTime = 111;
+
+        musica.play().catch(() => {});
+
+        musicaIniciada = true;
+      }
+
+
+      /*
+        TODOS OS OUTROS CLIQUES:
+
+        Apenas mudam a mensagem.
+
+        A música NÃO é reiniciada.
+      */
+
+      mostrarProximaMensagem();
+
+    });
+
+
+    /* =====================================================
+       PRÓXIMA MENSAGEM
+       ===================================================== */
 
     function mostrarProximaMensagem() {
 
       etapa++;
 
-
-      /*
-        Quando todas as mensagens forem mostradas,
-        exibimos a declaração final.
-      */
 
       if (etapa >= mensagens.length) {
 
@@ -627,11 +442,6 @@
         return;
       }
 
-
-      /*
-        Faz o texto desaparecer suavemente
-        antes de trocar.
-      */
 
       texto.style.opacity = "0";
 
@@ -647,21 +457,13 @@
         texto.innerHTML =
           mensagens[etapa].texto;
 
-
         texto.style.opacity = "1";
 
         texto.style.transform =
           "translateY(0)";
 
 
-        /*
-          Altera o texto do botão
-          conforme a etapa.
-        */
-
-        if (
-          etapa === mensagens.length - 1
-        ) {
+        if (etapa === mensagens.length - 1) {
 
           botao.textContent =
             "Tem mais uma coisa... ❤️";
@@ -679,45 +481,16 @@
 
 
     /* =====================================================
-       BOTÃO
-       ===================================================== */
-
-    botao.addEventListener(
-      "click",
-      mostrarProximaMensagem
-    );
-
-
-    /* =====================================================
-       DECLARAÇÃO FINAL
+       FINAL
        ===================================================== */
 
     function mostrarFinal() {
 
-      /*
-        Esconde a carta
-      */
-
       carta.style.display = "none";
-
-
-      /*
-        Mostra a declaração
-      */
 
       final.style.display = "flex";
 
-
-      /*
-        Cria uma explosão de corações
-      */
-
       criarCoracoes();
-
-
-      /*
-        Cria outra explosão depois de um instante
-      */
 
       setTimeout(() => {
 
@@ -751,7 +524,6 @@
         coracao.className =
           "coracao-final";
 
-
         coracao.textContent =
           simbolos[
             Math.floor(
@@ -761,11 +533,6 @@
           ];
 
 
-        /*
-          Define uma direção aleatória
-          para cada coração.
-        */
-
         const x =
           (Math.random() - 0.5) * 700;
 
@@ -773,11 +540,9 @@
           (Math.random() - 0.5) * 700;
 
 
-        coracao.style.left =
-          "50%";
+        coracao.style.left = "50%";
 
-        coracao.style.top =
-          "50%";
+        coracao.style.top = "50%";
 
 
         coracao.style.setProperty(
@@ -795,11 +560,6 @@
           coracao
         );
 
-
-        /*
-          Remove o elemento depois
-          da animação.
-        */
 
         setTimeout(() => {
 
