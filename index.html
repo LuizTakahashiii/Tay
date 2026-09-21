@@ -203,14 +203,11 @@
 
 <body>
 
-  <!-- MÚSICA -->
-  <!-- O arquivo experience.mp3 precisa estar no mesmo local do index.html -->
-  <audio id="musica" loop>
+  <audio id="musica" preload="auto" loop>
     <source src="experience.mp3" type="audio/mpeg">
   </audio>
 
 
-  <!-- CORAÇÕES DO FUNDO -->
   <script>
     for (let i = 0; i < 25; i++) {
 
@@ -232,7 +229,6 @@
   </script>
 
 
-  <!-- CARTA -->
   <main class="container" id="carta">
 
     <h1 id="titulo">
@@ -258,7 +254,6 @@
   </main>
 
 
-  <!-- FINAL -->
   <section id="final">
 
     <h2>
@@ -292,10 +287,6 @@
     const musica =
       document.getElementById("musica");
 
-
-    /* =====================================================
-       MENSAGENS
-       ===================================================== */
 
     const mensagens = [
 
@@ -379,56 +370,64 @@
 
     let etapa = -1;
 
-    /*
-      Controla se a música já foi iniciada.
-
-      Ela começa UMA ÚNICA VEZ em 01:51.
-      Depois disso, continua normalmente.
-    */
-
     let musicaIniciada = false;
 
 
     /* =====================================================
-       BOTÃO
+       PRIMEIRO CLIQUE
        ===================================================== */
 
     botao.addEventListener("click", () => {
 
-      /*
-        PRIMEIRO CLIQUE:
-
-        01:51 = 111 segundos
-
-        A música começa exatamente nesse ponto.
-      */
-
       if (!musicaIniciada) {
 
-        musica.currentTime = 111;
-
-        musica.play().catch(() => {});
-
         musicaIniciada = true;
+
+        /*
+          Primeiro iniciamos a música.
+          Isso é mais compatível com celulares,
+          pois o play() acontece diretamente
+          dentro do toque/clique do usuário.
+        */
+
+        musica.play()
+          .then(() => {
+
+            /*
+              Depois que a música começou,
+              colocamos exatamente em 01:51.
+
+              01:51 = 111 segundos.
+            */
+
+            musica.currentTime = 111;
+
+          })
+          .catch((erro) => {
+
+            console.log(
+              "Não foi possível reproduzir a música:",
+              erro
+            );
+
+            musicaIniciada = false;
+
+          });
+
       }
 
 
       /*
-        TODOS OS OUTROS CLIQUES:
+        A partir daqui, cada clique muda
+        somente a mensagem.
 
-        Apenas mudam a mensagem.
-
-        A música NÃO é reiniciada.
+        A música continua normalmente.
       */
 
       mostrarProximaMensagem();
 
     });
 
-
-    /* =====================================================
-       PRÓXIMA MENSAGEM
-       ===================================================== */
 
     function mostrarProximaMensagem() {
 
@@ -440,6 +439,7 @@
         mostrarFinal();
 
         return;
+
       }
 
 
@@ -480,10 +480,6 @@
     }
 
 
-    /* =====================================================
-       FINAL
-       ===================================================== */
-
     function mostrarFinal() {
 
       carta.style.display = "none";
@@ -500,10 +496,6 @@
 
     }
 
-
-    /* =====================================================
-       EXPLOSÃO DE CORAÇÕES
-       ===================================================== */
 
     function criarCoracoes() {
 
